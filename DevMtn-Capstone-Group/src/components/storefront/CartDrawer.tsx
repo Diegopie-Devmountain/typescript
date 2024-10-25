@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { ShoppingCartIcon, XMark } from "../CommonComponents/icons";
 import ItemInCart from "./ItemInCart";
-import {CartLineItem} from "../../../types/cart";
 
 // Utility function to calculate the cart total (same as calculateTotalPrice)
 function cartTotal(cartItems) {
@@ -50,7 +49,7 @@ function CartDrawer() {
 
                     <ul className="space-y-4 overflow-scroll">
                         {cartItems.map((itemInCart: CartLineItem) => {
-                            console.log(itemInCart)
+                            console.log(JSON.stringify(itemInCart, null, 3))
                             return (
                                 <ItemInCart 
                                     key={itemInCart.itemId}

@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json", 
   "compilerOptions": {
     "target": "es2017",
+    "composite": true,
     "module": "ESNext",
     "outDir": "../dist", // Output directory for compiled server code
     "lib": ["ES2023"],   // Libraries for Node.js environment

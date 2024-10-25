@@ -1,4 +1,4 @@
-export interface ItemData {
+interface ItemData {
   itemId: number,
   itemName: string,
   itemDescription: string,
@@ -8,7 +8,7 @@ export interface ItemData {
   isSpecialItem: boolean
 }
 
-export interface CartLineItem {
+interface CartLineItem {
   cartItemKey: ItemData,
   quantity: number,
   total: number,

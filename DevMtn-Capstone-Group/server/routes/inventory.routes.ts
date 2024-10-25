@@ -3,7 +3,6 @@ import { Router } from 'express';
 import { Op } from "sequelize";
 // Models
 import { Inventory } from "../models/index.js"
-import {ItemData} from '../../types/cart.js'
 
 const inventoryRouter = Router();
 

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server/server.js -w server/server.js -w server -w src",
+    "dev": "nodemon -w 'server' -w 'src' -w 'scripts' --exec npx tsx server/server.ts",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
