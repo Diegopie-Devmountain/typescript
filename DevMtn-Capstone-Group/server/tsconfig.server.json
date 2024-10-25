@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json", 
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "ESNext",
+    "outDir": "../dist", // Output directory for compiled server code
+    "lib": ["ES2023"],   // Libraries for Node.js environment
+    // Add other server-specific options if needed
+  },
+  "include": ["./**/*", "../scripts/**/*"] // Include all files in the server folder
+}
