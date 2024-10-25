@@ -25,6 +25,8 @@ Honestly, the best place to start is to make a new Vite app using TypeScript. Th
 Update the scripts to match the new Vite app since TS will need to be compiled and double check your Tailwind config ensure it is looking at tsx files.
 If you keep getting conflicts, you will have to manually check which packages are conflicting or use an AI
 
+Make sure to update vite.config.ts
+
 ### Update storeReducer
 
 We can now change the file to .ts instead of .js and we will create an `interface` for our state. 
@@ -67,7 +69,6 @@ const initialState: State = {
 
 Now lets rewrite one of our reducers and see how TS makes this much more intuitive to know what objects we are working with
 
-
 ## Custom Types
 
 That is great an all, but we use these same data structure all over our app, from the front end to the back end. So let's make it accessible anywhere we need it
@@ -79,6 +80,7 @@ That is great an all, but we use these same data structure all over our app, fro
 * Paste in your interfaces in this file
 * In both the `tsconfig.app.json` and `tsconfig.node.json`:
   * Add `"composite": true,` property and set `noEmit` to `false`
+  * Remove `"allowImportingTsExtensions": true,`
 * In `tsconfig.json`, add `"include": ["**/*.d.ts"]` property
 
 Now we can delete the types from the cartStore and we will still have access to them!
@@ -89,26 +91,13 @@ We have a few setup steps here:
 
 * npm install -D @types/express @types/node @types/nodemon tsx
   * tsx is a replacement for ts-node
-* Add tsconfig.server.ts to the server and update tsconfig.json
-
- ```js
- {
-  "extends": "../tsconfig.json", 
-  "compilerOptions": {
-    "target": "es2017",
-    "composite": true,
-    "module": "ESNext",
-    "outDir": "../dist", // Output directory for compiled server code
-    "lib": ["ES2023"],   // Libraries for Node.js environment
-    // Add other server-specific options if needed
-  },
-  "include": ["./**/*", "../scripts/**/*"] // Include all files in the server folder
-}
-```
-
-* `{ "path": "./server/tsconfig.server.json" },`
+* Update tsconfig.json: `"include": ["src", "server", "scripts", "scripts"]`
 
 ## Using JSX
 
 Let's update CartDrawer.jsx
 (edit a jsx key to be `itemId` to show how TS will find bugs without having to discover them in the browser)
+
+## Build
+
+Try to build it and behold all the type errors that you have to fix! Good luck!
