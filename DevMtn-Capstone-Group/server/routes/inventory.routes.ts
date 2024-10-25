@@ -7,7 +7,7 @@ import { Inventory } from "../models/index.js"
 const inventoryRouter = Router();
 
 // get inventory for regular items
-inventoryRouter.get('/regular', async (req, res) => {
+inventoryRouter.get('/regular', async (_req, res) => {
     const regInventory = await Inventory.findAll({
         where: { isSpecialItem: false },
         order: [['itemId', 'ASC']]
@@ -16,7 +16,7 @@ inventoryRouter.get('/regular', async (req, res) => {
 })
 
 // get inventory for special items
-inventoryRouter.get('/special', async (req, res) => {
+inventoryRouter.get('/special', async (_req, res) => {
     const specInventory = await Inventory.findAll({
         where: { isSpecialItem: true },
         order: [['itemId', 'ASC']]
@@ -25,7 +25,7 @@ inventoryRouter.get('/special', async (req, res) => {
 })
 
 // get first special item with non-zero quantity
-inventoryRouter.get('/special/instock', async (req, res) => {
+inventoryRouter.get('/special/instock', async (_req, res) => {
     const specStockInventory = await Inventory.findOne({
         where: {
             isSpecialItem: true,

@@ -6,7 +6,6 @@ import { User, Inventory, History } from '../server/models/index.js'
 import userData from './Data/users.json' assert { type: 'json' };
 import historyData from './Data/history.json' assert { type: 'json' };
 import inventoryData from './Data/inventory.json' assert { type: 'json' };
-import { ItemData } from '../types/cart.js';
 
 
 console.log('Syncing database...');
@@ -38,7 +37,7 @@ const usersInDB = await Promise.all(
 
 // seeding Inventory
 const itemsInDB = await Promise.all(
-    inventoryData.map((item: ItemData) => {
+    inventoryData.map((item) => {
         const { itemName, itemDescription, itemPrice, imageUrl, quantity, isSpecialItem } = item;
 
         const newItem: ItemData = Inventory.create({
